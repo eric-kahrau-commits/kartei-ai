@@ -11,9 +11,6 @@ interface FlashCardProps {
   onFlip: () => void;
 }
 
-const FLIP_OUT = { rotateY: 90,  opacity: 0, transition: { duration: 0.18, ease: 'easeIn'  } };
-const FLIP_IN  = { rotateY: 0,   opacity: 1, transition: { duration: 0.18, ease: 'easeOut' } };
-
 export default function FlashCard({ card, isFlipped, onFlip }: FlashCardProps) {
   return (
     <div
@@ -26,8 +23,8 @@ export default function FlashCard({ card, isFlipped, onFlip }: FlashCardProps) {
           <motion.div
             key="front"
             initial={{ rotateY: -90, opacity: 0 }}
-            animate={FLIP_IN}
-            exit={FLIP_OUT}
+            animate={{ rotateY: 0, opacity: 1, transition: { duration: 0.18 } }}
+            exit={{ rotateY: 90, opacity: 0, transition: { duration: 0.18 } }}
             className="w-full rounded-3xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 shadow-2xl overflow-hidden"
           >
             <div className="relative pt-10 pb-10">
@@ -45,8 +42,8 @@ export default function FlashCard({ card, isFlipped, onFlip }: FlashCardProps) {
           <motion.div
             key="back"
             initial={{ rotateY: 90, opacity: 0 }}
-            animate={FLIP_IN}
-            exit={{ ...FLIP_OUT, rotateY: -90 }}
+            animate={{ rotateY: 0, opacity: 1, transition: { duration: 0.18 } }}
+            exit={{ rotateY: -90, opacity: 0, transition: { duration: 0.18 } }}
             className="w-full rounded-3xl bg-gradient-to-br from-indigo-900/40 to-slate-900 border border-indigo-800/50 shadow-2xl overflow-hidden"
           >
             <div className="relative pt-10 pb-10">
