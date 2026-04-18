@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KarteiAI
 
-## Getting Started
+Eine moderne, KI-gestützte Karteikarten-App – kostenlos, geräteübergreifend und ohne Abo.
 
-First, run the development server:
+## Features
+
+- **Karteikarten erstellen** – Frage & Antwort mit Rich Text (fett, kursiv, unterstrichen), Bilder pro Seite, Diktat-Eingabe per Mikrofon
+- **3D-Lernmodus** – Karten umdrehen mit Flip-Animation, Richtig/Falsch markieren, falsche Karten wiederholen, Ergebnisscreen
+- **KI-Lernübersicht** – Strukturierte Zusammenfassung deiner Karteninhalte (GPT-4o-mini), Länge wählbar (Kurz/Mittel/Lang)
+- **Dashboard** – Alle Lernsets auf einen Blick, Fortschrittsbalken, Statistiken
+- **Authentifizierung** – Firebase Email/Passwort, Daten geräteübergreifend synchronisiert
+- **Bildupload** – Cloudinary-Integration mit automatischer Komprimierung
+
+## Tech Stack
+
+| Technologie | Zweck |
+|---|---|
+| Next.js 16 (App Router) + TypeScript | Framework |
+| Tailwind CSS v4 | Styling |
+| Framer Motion | Animationen |
+| Firebase (Auth + Firestore) | Authentifizierung & Datenbank |
+| Cloudinary | Bildspeicherung |
+| OpenAI GPT-4o-mini | KI-Übersichten |
+
+## Lokale Entwicklung
 
 ```bash
+# Dependencies installieren
+npm install
+
+# Dev-Server starten
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Öffne [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Umgebungsvariablen
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Erstelle eine `.env.local` Datei mit folgenden Werten:
 
-## Learn More
+```env
+# Firebase
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
 
-To learn more about Next.js, take a look at the following resources:
+# OpenAI (nur server-seitig)
+OPENAI_API_KEY=
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Cloudinary
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
+NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Das Projekt ist für [Vercel](https://vercel.com) optimiert. Umgebungsvariablen im Vercel-Dashboard unter **Settings → Environment Variables** eintragen.
